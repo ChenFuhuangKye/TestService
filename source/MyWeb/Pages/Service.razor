@@ -1,0 +1,21 @@
+﻿@page "/Service"
+
+<PageTitle>Testing  Web  Service</PageTitle>
+
+@using MyWeb.Data
+
+<h1>Testing  Web  Service</h1>
+ip:<input placeholder="Enter ip" @bind-value="@ip" />
+port:<input placeholder="Enter port" @bind-value="@port" />
+<button class="btn btn-primary" @onclick="GetService">Check</button>
+<p>@value</p>
+
+@code {
+    string ip = "127.0.0.1";
+    int port = 80;
+    string value = "Test Servive";
+    public void GetService(){            
+        TestService hpingService = new TestService();
+        value = hpingService.test(ip,port);        
+    }
+}
